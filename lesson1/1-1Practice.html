@@ -1,0 +1,25 @@
+<html>
+    <script src="https://unpkg.com/vue@next"></script>
+    <head>
+        <!-- document.addEnventListener("DOMContentLoaded", () =>{
+            //DOM Ready!
+            vm.mount('#app');
+        }) -->
+    </head>
+    <body>
+        <div id="app">
+            {{ message }}
+        </div>
+    </body>
+    <script>
+        const vm = Vue.createApp({
+            data(){
+                return{
+                    message: 'hello vue 3.0'
+                }
+            }
+        });
+
+        vm.mount('#app');
+    </script>
+</html>
