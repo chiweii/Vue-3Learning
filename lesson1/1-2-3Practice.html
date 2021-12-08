@@ -1,0 +1,27 @@
+<html>
+    <script src="https://unpkg.com/vue@next"></script>
+    <body>
+        <div id="app">
+            %{ name }% 發大財 <br>
+            資產 : %{ asset }% <br>
+            股票張數 : %{ stock*100 }%
+        </div>
+    </body>
+    <script>
+        // Vue js 實體物件
+        const vm = Vue.createApp({
+            delimiters: ['%{','}%'],
+            data(){
+                return{
+                    name: 'shihchi',
+                    asset: 998999999999,
+                    stock: 5
+                }
+            } 
+        });
+        
+        const vMountedInstance = vm.mount('#app');
+
+        vMountedInstance.$data.name = 'Ben';
+    </script>
+</html>

@@ -1,0 +1,32 @@
+<html>
+    <script src="https://unpkg.com/vue@next"></script>
+    <body>
+        <div id="app1">
+            <h1>{{ name }}</h1>
+            <input type="text" v-model="name">
+        </div>
+        <div id="app2">
+            <h1>{{ name }}</h1>
+            <input type="text" v-model="name">
+        </div>
+    </body>
+    <script>
+        const dataObj = {
+            name : 'Type Your Name'
+        };
+
+        // 建立兩個 Vue 實例，並且指向同個Obj 但會互相受到影響 所以用深拷貝來將兩個區分開
+        const vm1 = Vue.createApp({
+            data(){
+                return JSON.parse(JSON.stringify(dataObj));
+            }
+        }).mount('#app1');
+
+        const vm2 = Vue.createApp({
+            data(){
+                return JSON.parse(JSON.stringify(dataObj));
+            }
+        }).mount('#app2');
+
+    </script>
+</html>

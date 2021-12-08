@@ -1,0 +1,19 @@
+<html>
+    <script src="https://unpkg.com/vue@next"></script>
+    <body>
+        <div id="app">
+            
+        </div>
+    </body>
+    <script>
+        const vm = Vue.createApp({
+            //如果有設置 template，該 root element 內如果有其他的element就會吃不到了
+            template: `<b>{{ name }} 讚<b>`,
+            data (){
+                return {
+                    name : 'Weiwei'
+                }
+            }
+        }).mount('#app');
+    </script>
+</html>
