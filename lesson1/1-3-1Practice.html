@@ -1,0 +1,25 @@
+<html>
+    <script src="https://unpkg.com/vue@next"></script>
+    <body>
+        <div id="app">
+            <!-- 使用methods屬性 -->
+            姓名 : {{ name }} <br>
+            總資產 : {{ property() }}
+        </div>
+    </body>
+    <script>
+        const vm = Vue.createApp({
+            data (){
+                return {
+                    name : 'Weiwei',
+                    money : 56789451,
+                    stock : 10000000,
+                }
+            },methods: {
+                property: function(){
+                    return this.money + this.stock;
+                }
+            }
+        }).mount('#app');
+    </script>
+</html>
