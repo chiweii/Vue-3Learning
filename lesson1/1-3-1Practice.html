@@ -4,6 +4,8 @@
         <div id="app">
             <!-- 使用methods屬性 -->
             姓名 : {{ name }} <br>
+            金錢：{{ money }} <br>
+            股票：{{ stock }} <br>
             總資產 : {{ property() }}
         </div>
     </body>
@@ -11,7 +13,7 @@
         const vm = Vue.createApp({
             data (){
                 return {
-                    name : 'Weiwei',
+                    name : 'Ben',
                     money : 56789451,
                     stock : 10000000,
                 }

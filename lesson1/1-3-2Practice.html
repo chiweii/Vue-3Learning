@@ -1,0 +1,46 @@
+<html>
+    <script src="https://unpkg.com/vue@next"></script>
+    <body>
+        <div id="app">
+            <!-- 使用methods屬性 -->
+            姓名 : {{ name }} <br>
+            金錢：{{ money }} <br>
+            股票：{{ stock }} <br>
+            ------------- <br>computed
+            <br>
+            總資產 : {{ propertyComputed }} <br>
+            總資產 : {{ propertyComputed }} <br>
+            ------------- <br>methods
+            <br>
+            總資產 : {{ propertyMethod() }}<br>
+            總資產 : {{ propertyMethod() }}
+        </div>
+    </body>
+    <script>
+        const vm = Vue.createApp({
+            data (){
+                return {
+                    name : 'Ben',
+                    money : 56789451,
+                    stock : 10000000,
+                }
+            },
+            computed: {  
+                // computed 有暫存功能 所以html 有呼叫過 後面再呼叫也不會觸發function 除非
+                // 如果他使用到的屬性沒有更新 他就不會再執行一次
+                // 注意 ! computed 的function 沒辦法帶入參數 methods 可以
+                propertyComputed: function(){
+                    console.log('computed');
+                    return this.money + this.stock;
+                }
+            },methods: { 
+                // html 中 呼叫一次 就會執行一次
+                // 有使用到的屬性有更新時他也都會執行 ，html 呼叫幾次就執行幾次~
+                propertyMethod: function(){
+                    console.log('methods');
+                    return this.money + this.stock;
+                }
+            }
+        }).mount('#app');
+    </script>
+</html>
