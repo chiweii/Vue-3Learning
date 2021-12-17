@@ -1,0 +1,52 @@
+<html>
+    <script src="https://unpkg.com/vue@next"></script>
+    <body>
+        <div id="app">
+            <p>Message is : {{ message }}</p>
+            <input v-model="message" placeholder="edit me">
+            <hr>
+
+            <p><span>Multiline message is : </span> {{ textarea_message }} </p>
+            <textarea v-model="textarea_message" cols="30" rows="10" placeholder="add mutiple lines"></textarea>
+            <hr>
+
+            <p></p>
+            <input type="radio" id="one" value="1" v-model="picked">
+            <label for="one">One</label><br>
+            <input type="radio" id="two" value="2" v-model="picked">
+            <label for="two">Two</label>
+            <br>
+            <span>Picked : {{ picked }}</span>
+            <hr>
+            <p></p>
+            <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+            <label for="jack">Jack</label>
+            <input type="checkbox" id="ben" value="Ben" v-model="checkedNames">
+            <label for="ben">Ben</label>
+            <input type="checkbox" id="chloe" value="Chloe" v-model="checkedNames">
+            <label for="chloe">Chloe</label>
+            <input type="checkbox" id="wei" value="Wei" v-model="checkedNames">
+            <label for="wei">Wei</label>
+            <input type="checkbox" id="lily" value="Lily" v-model="checkedNames">
+            <label for="lily">Lily</label>
+            <br>
+            <input type="checkbox" id="checkbox" v-model="isChecked">
+            <label for="checkbox">Status : {{ isChecked }}</label>
+            <br>
+            <p>Checked Names : {{ checkedNames }}</p>
+        </div>
+    </body>
+    <script>
+        const vm = Vue.createApp({
+            data (){
+                return {
+                    message : '',
+                    textarea_message : '',
+                    picked:'',
+                    checkedNames : [],
+                    isChecked : false,
+                }
+            }
+        }).mount('#app');
+    </script>
+</html>

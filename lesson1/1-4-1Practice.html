@@ -1,0 +1,33 @@
+<html>
+    <script src="https://unpkg.com/vue@next"></script>
+    <body>
+        <div id="app">
+            <!-- v-bind:attribute="vue data物件的狀態" 可以綁定 html 的屬性 -->
+            <!-- 也可以簡寫成 :attribute="vue data物件的狀態" -->
+            <button v-bind:disabled="isBtnDisabled">Click Me!</button><br><br>
+            <button :disabled="isBtnEnabled">Click Me!</button><br><br>
+            <div>請輸入您的姓名 :  <input type="text" v-model="TypecustomId"></div>
+            <p v-bind:id="customId">{{ customId }}</p>
+        </div>
+    </body>
+    <script>
+        const vm = Vue.createApp({
+            data (){
+                return {
+                    customId : '',
+                    isBtnDisabled : true,
+                    isBtnEnabled : false,
+                }
+            },computed: { 
+                TypecustomId :{
+                    get (){
+                        return this.customId;
+                    },
+                    set (val){
+                        this.customId = val;
+                    }
+                },
+            }
+        }).mount('#app');
+    </script>
+</html>
