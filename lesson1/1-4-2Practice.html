@@ -17,6 +17,8 @@
             <label for="two">Two</label>
             <br>
             <span>Picked : {{ picked }}</span>
+
+
             <hr>
             <p></p>
             <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
@@ -30,10 +32,22 @@
             <input type="checkbox" id="lily" value="Lily" v-model="checkedNames">
             <label for="lily">Lily</label>
             <br>
+            <p>Checked Names : {{ checkedNames }}</p>
+
+            <hr>
             <input type="checkbox" id="checkbox" v-model="isChecked">
             <label for="checkbox">Status : {{ isChecked }}</label>
             <br>
-            <p>Checked Names : {{ checkedNames }}</p>
+
+            <hr>
+            <select v-model="selectedCitys">
+                <option disabled value="">請選擇</option>
+                <option value="台中市">台中市</option>
+                <option value="台南市">台南市</option>
+                <option value="高雄市">高雄市</option>
+            </select>
+            <br>
+            <p>你選擇的城市 : {{ selectedCitys || '未選擇'  }}</p>
         </div>
     </body>
     <script>
@@ -45,6 +59,7 @@
                     picked:'',
                     checkedNames : [],
                     isChecked : false,
+                    selectedCitys : ''
                 }
             }
         }).mount('#app');

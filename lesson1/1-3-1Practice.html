@@ -4,9 +4,10 @@
         <div id="app">
             <!-- 使用methods屬性 -->
             姓名 : {{ name }} <br>
-            金錢：{{ money }} <br>
-            股票：{{ stock }} <br>
-            總資產 : {{ property() }}
+            存款：{{ money }} <br>
+            股票價值：{{ stock }} <br>
+            總資產 : {{ property() }}<br>
+            {{ target() }}
         </div>
     </body>
     <script>
@@ -20,6 +21,9 @@
             },methods: {
                 property: function(){
                     return this.money + this.stock;
+                },
+                target: function(){
+                    return 'tank';
                 }
             }
         }).mount('#app');

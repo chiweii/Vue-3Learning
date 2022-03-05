@@ -1,0 +1,36 @@
+<html>
+    <script src="https://unpkg.com/vue@next"></script>
+    <div id="app">
+        v-model.lazy : 輸入完離開焦點框 才觸發
+        <p> msg : <input type="text" v-model.lazy="msg"></p>
+        <p>you typing message : {{ msg }}</p>
+
+        <hr>
+        v-model.number : 輸入數字會自動相加，輸入文字則會串文字
+        <p><input v-model.number ="num1"> + <input v-model.number ="num2"> = {{sum}}</p>
+
+        <hr>
+        v-model.trim : 自動過濾 前後空白
+        <p><input type="text" v-model.trim="msg2"></p>
+        <p>you typing message : {{ msg2 }}</p>
+    </div>
+
+    <script>
+        const vm = Vue.createApp({
+            data (){
+                return {
+                    msg: '',
+                    num1: 0,
+                    num2: 0,
+                    msg2: ''
+                }
+            },
+            computed: {
+                sum(){
+                    return this.num1 + this.num2;
+                }
+            }
+        }).mount('#app');
+
+    </script>
+</html>

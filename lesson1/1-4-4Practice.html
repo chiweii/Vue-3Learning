@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <script src="https://unpkg.com/vue@next"></script>
+    <div id="app">
+        <h1>v-text</h1> 
+        <!-- 會無視div內的內容 -->
+        <div v-text="text">World</div>
+        <!-- 會接著串字串 -->
+        <div>{{ text }} World </div>
+
+        <hr>
+        <h1>v-html</h1> 
+        <div v-html="text2"></div>
+        {{ text2 }}
+        
+        <hr>
+        
+        <h1>v-once</h1>
+        <input type="text" v-model='text3'>
+        
+        
+        <div>會隨著 input v-model 輸入的內容變動 : {{ text3 }}</div>
+        <div v-once>只會顯示初始化的text3 內容 : {{ text3 }}</div>
+        <hr>
+
+        <h1>v-pre</h1>
+        v-pre 的區塊 不會解析 {{}} 的內容，會直接做顯示
+        <div v-pre>{{text4}}</div>
+        <br>
+        沒有 v-pre 的區塊 則會直接被解析
+        <div>{{text4}}</div>
+    </div>
+<body>
+<script>
+    const vm = Vue.createApp({
+        data (){
+            return {
+                text : 'Hello! ',
+                text2 : '<b>這是 v-html 的 text2</b>',
+                text3 : '這是 v-once 的功用',
+                text4 : 'Hello'
+            }
+        }
+    }).mount('#app');
+</script>
+</body>
+</html>

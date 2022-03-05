@@ -1,0 +1,62 @@
+<html>
+    <script src="https://unpkg.com/vue@next"></script>
+<style>
+    .error_show{
+        display: block;
+        border: red solid 1px;
+        color: red;
+        
+    }
+    .error_hide{
+        display: none;
+    }
+</style>
+<body>
+    <h2> v-bind1 :class</h2>
+    <div id="app">
+        <input 
+            type="text" 
+            v-model.trim="message">
+        <br>
+        <font :class="{ 'error_show': message.length > 10 ,'error_hide' : message.length <=10 }">文字輸入超過10個字元</font>
+    </div>
+    <h2> v-bind2 :style </h2>
+    <div id="app2">
+        <input 
+            type="text"
+            v-model.trim="message"
+            placeholder="請勿輸入超過10個字"
+            >
+            <font :style="msgStyle">文字輸入超過10個字元</font>
+    </div>
+</body>
+<script>
+    const vm = Vue.createApp({
+        data(){
+            return{
+                message: ''
+            }
+        }
+    }).mount('#app');
+
+    const vm2 = Vue.createApp({
+        data(){
+            return{
+                message: ''
+            }
+        },
+        computed:{
+            isVaild: function(){
+                return this.message.length <= 10
+            },
+            msgStyle: function(){
+                return {
+                    'border': this.isVaild ? '' : 'red solid 1px',
+                    'color': this.isVaild ? '' : 'red',
+                    'display': this.isVaild ? 'none' : 'block'
+                };
+            }
+        }
+    }).mount('#app2');
+</script>
+</html>
