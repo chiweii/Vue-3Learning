@@ -1,0 +1,53 @@
+<html>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <body>
+        <div id="app">
+            <h2> v-on:click </h2>
+            <p>Count : {{ count }}</p>
+            <button v-on:click="count++">Plus</button>
+            <button v-on:click="count--">Reduce</button>
+        </div>
+
+        <div id="app2">
+            <h2> v-on:click with methods </h2>
+            <h3 :style="h3Style"> v-on 也可以寫成 @ 就好 ， Ex : v-on:click 可以寫成 @click </h3>
+            <p>Count : {{ count }}</p>
+            <button v-on:click="plus">Plus</button>
+            <button @click="reduce">Reduce</button>
+        </div>
+    </body>
+    <script>
+        const vm = Vue.createApp({
+            data(){
+                return {
+                    count: 0
+                }
+            }
+        }).mount('#app');
+
+        const vm2 = Vue.createApp({
+            data(){
+                return {
+                    count: 0
+                }
+            },
+            methods: {
+                plus(){
+                    this.count++;
+                },
+                reduce(){
+                    if(this.count >0){
+                        this.count--;
+                    }
+                }
+            },computed:{
+                h3Style: function(){
+                    return{
+                        'color': 'red'
+                    }
+                }
+            }
+        }).mount('#app2');
+    </script>
+</html>
