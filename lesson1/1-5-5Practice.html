@@ -1,0 +1,31 @@
+<html>
+    <script src="https://unpkg.com/vue@next"></script>
+    <body>
+        <div id="app">
+            <h2> @click.[left|middle|right] 滑鼠按鈕偵測，請開啟F12 console 測試</h2>
+            <div @click.left="left">Left (請對我點滑鼠左鍵)</div>
+            <div @click.middle="middle">Middle (請對我點滑鼠滾輪鍵)</div>
+            <div @click.right="right">Right (請對我點滑鼠右鍵)</div>
+        </div>
+    </body>
+    <script>
+        const vm = Vue.createApp({
+            data(){
+                return {
+                    
+                }
+            },
+            methods: {
+                left(){
+                    console.log('left');
+                },
+                middle(){
+                    console.log('Middle');
+                },
+                right(){
+                    console.log('Right');
+                },
+            },
+        }).mount('#app');
+    </script>
+</html>

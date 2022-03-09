@@ -1,0 +1,69 @@
+<html>
+    <script src="https://unpkg.com/vue@next"></script>
+        <div id="app">
+            <h2>@click.stop 防止 event.stopPropagation 事件冒泡 </h2>
+            <div class="outer" @click="alert('Outer')">
+                <span>Outer</span>
+                <div class="inner" @click.stop="alert('Inner')">Inner</div>
+            </div>
+            <hr>
+            <h2>@click.prevent 防止 event.preventDefault 元素預設行為</h2>
+            <a href="#" class="btn" @click.stop.prevent="alert('hello!')">Click Me!</a>
+            <hr>
+            <h2>@click.capture 會從外層到內層觸發事件冒泡</h2>
+            <div class="outer" @click.capture="alert('Outer')">
+                <span>Outer</span>
+                <div class="inner" @click="alert('Inner')">Inner</div>
+            </div>
+            <hr>
+            <h2>@click.self 也可防止事件冒泡</h2>
+            <div class="modal-mask">
+                <div @click.self="outer">outer 沒有.self 會被觸發冒泡
+                    <div @click.self="middle"> middle 有.self 不會觸發冒泡<br>
+                        <button @click="inner">inner</button>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <h2>@click.once 只會讓事件觸發一次</h2>
+            <div class="modal-mask">
+                <p>{{ once_count }}</p>
+                <button @click.once="plus">Plus One</button>
+                <button @click="plus">Plus</button>
+                <button @click="reset">Reset</button>
+            </div>
+            <hr>
+            <h2>@click.passive 無視preventDefault</h2>
+        </div>
+    <script>
+         const vm = Vue.createApp({
+            data(){
+                return {
+                    count: 0,
+                    once_count: 0,
+                    isShow: true,
+                }
+            },
+            methods: {
+                alert(msg){
+                    console.log(msg);
+                },
+                inner() {
+                    console.log('這是裡面的 button');
+                },
+                middle() {
+                    console.log('這是中間的 div');
+                },
+                outer() {
+                    console.log('這是外面的 div');
+                },
+                plus(){
+                    this.once_count ++;
+                },
+                reset(){
+                    this.once_count=0;
+                }
+            }
+        }).mount('#app');
+    </script>
+</html>

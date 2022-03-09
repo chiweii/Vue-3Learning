@@ -4,7 +4,8 @@
         <div id="methods_app">
             <p>1 日幣 = 0.278台幣</p>
             <div>台幣<input type="text" v-model="twd" v-on:input="twd2jpy"></div>
-            <div>日幣<input type="text" v-model="jpy" v-on:input="jpy2twd"></div>
+            <!-- v-on 可以簡寫成 @ -->
+            <div>日幣<input type="text" v-model="jpy" @input="jpy2twd"></div>
         </div>
         --------------------------
         <div id="computed_app">

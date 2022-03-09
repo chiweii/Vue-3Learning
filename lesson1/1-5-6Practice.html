@@ -1,0 +1,19 @@
+<html>
+    <script src="https://unpkg.com/vue@next"></script>
+    <body>
+        <div id="app">
+            <h2>v-model 等於 v-bind:value 與 v-on:input 的組合 </h2>
+            <input type="text" :value="msg" v-on:input="msg = $event.target.value" id="test">
+            {{ msg }}
+        </div>
+    </body>
+    <script>
+        const vm = Vue.createApp({
+            data(){
+                return {
+                    msg: ''
+                }
+            }
+        }).mount('#app');
+    </script>
+</html>
