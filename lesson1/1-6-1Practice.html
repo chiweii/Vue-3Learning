@@ -1,0 +1,63 @@
+<html>
+    <script src="https://unpkg.com/vue@next"></script>
+    <body>
+        <div id="app">
+            <h2>v-if & v-show compare</h2>
+            <div v-if="isShow">
+                test1
+            </div>
+            <div v-show="isShow">
+                test2
+            </div>
+        </div>
+        <hr>
+        <div id="app2">
+            <h2>v-if & v-else-if & v-else</h2>
+            <div v-if="count === 0">Block A</div>
+            <div v-else-if="count > 3">Block B</div>
+            <div v-else>Block C</div>
+        </div>
+        <hr>
+        <div id="app3">
+           <h2>template with v-if</h2>
+           <select v-model="value">
+                <option disabled value="">請選擇</option>
+                <option value="A">Option A</option>
+                <option value="B">Option B</option>
+            </select>
+           <template v-if="value === 'A'">
+                <p>Title A</p>
+                <p>Paragraph A</p>               
+           </template>
+           <template v-else-if="value === 'B'">
+                <p>Title B</p>
+                <p>Paragraph B</p>     
+           </template>
+           <template v-else>     
+           </template>
+        </div>
+    </body>
+    <script>
+        const vm = Vue.createApp({
+            data(){
+                return{
+                    isShow: false
+                }
+            }
+        }).mount('#app');
+        const vm2 = Vue.createApp({
+            data(){
+                return{
+                    count: 5
+                }
+            }
+        }).mount('#app2');
+        const vm3 = Vue.createApp({
+            data(){
+                return{
+                    value: ''
+                }
+            }
+        }).mount('#app3');
+    </script>
+</html>
