@@ -1,0 +1,32 @@
+<html>
+    <script src="https://unpkg.com/vue@next"></script>
+    <body>
+        <div id="app">
+            <h2>v-for object </h2>
+            <div class="dropdown-menu">
+                <template v-for="i in links">
+                    <div class="dropdown-divider"></div>
+                    <a href="" class="dropdown-item" :href="i.link">{{i.title}}</a>
+                </template>
+            </div>
+        </div>
+    </body>
+    <script>
+        const vm = Vue.createApp({
+            data(){
+                return {
+                    links: [
+                        {
+                            link: 'https://www.google.com',
+                            title: 'google'
+                        },
+                        {
+                            link: 'https://www.yahoo.com',
+                            title: 'yahoo'
+                        }
+                    ]
+                }
+            }
+        }).mount('#app')
+    </script>
+</html>

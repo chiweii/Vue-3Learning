@@ -1,0 +1,51 @@
+<html>
+    <script src="https://unpkg.com/vue@next"></script>
+    <body>
+        <div id="app">
+            <h2>v-for array by (value,key) </h2>
+            <ul>
+                <li v-for="(value,key) in arr">【{{ key }}】{{ value }}</li>
+            </ul>
+        </div>
+        <hr>
+        <div id="app2">
+            <h2>v-for object by (value,key,index) </h2>
+            <ul>
+                <li v-for="(value,key,index) in book">{{index}} / {{key}} : {{ value }}</li>
+            </ul>
+        </div>
+        <hr>
+        <div id="app3">
+            <h2>v-for number</h2>
+            <button class="page-link">&lt;</button>
+            <span class="page-item" v-for="page in 10">
+                <button class="page-link">{{page}}</button>
+            </span>
+            <button class="page-link">&gt;</button>
+        </div>
+    </body>
+    <script>
+        const vm1 = Vue.createApp({
+            data() {
+                return {
+                    arr: ['5566','7788','9900','weiwei']
+                }
+            }
+        }).mount('#app');
+
+        const vm2 = Vue.createApp({
+            data() {
+                return {
+                    book:{
+                        'title': 'VueWeiJS',
+                        'author': 'Wei',
+                        'publishedAt': '2022/03'
+                    }
+                }
+            }
+        }).mount('#app2');
+        
+        const vm3 = Vue.createApp({
+        }).mount('#app3');
+    </script>
+</html>
