@@ -1,0 +1,32 @@
+<html>
+    <script src="https://unpkg.com/vue@next"></script>
+    <body>
+        <div id="app">
+            <h2>v-for array with filter even number</h2>
+            <div v-for="i in evenNumbers">
+                {{ i }}
+            </div>
+            <hr>
+            <div v-for="s in sortedNumbers">
+                {{ s }}
+            </div>
+        </div>
+    </body>
+    <script>
+        const vm = Vue.createApp({
+            data(){
+                return {
+                    numbers: [1,2,3,4,5,6,7,8,9,10]
+                }
+            },
+            computed:{
+                evenNumbers(){
+                    return this.numbers.filter(number => number % 2 === 0);
+                },
+                sortedNumbers(){
+                    return [...this.numbers].sort((a,b) => a-b);
+                }
+            }
+        }).mount('#app')
+    </script>
+</html>

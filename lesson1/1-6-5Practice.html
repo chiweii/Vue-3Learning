@@ -1,0 +1,53 @@
+<html>
+    <script src="https://unpkg.com/vue@next"></script>
+    <body>
+        <div id="app">
+            <h1>Todo List</h1>
+            <ul>
+                <li v-for="i in TodoLists" :key="i.id">
+                    <label for=""><input type="checkbox" v-model="i.isDone">{{ i.title }}</label>
+                </li>
+            </ul>
+
+            <h1>Done List</h1>
+            <ul>
+                <!-- :key 是為了讓vue 追蹤每一個節點的身分 -->
+                <li v-for="i in DoneLists" :key="i.id">
+                    <label for=""><input type="checkbox" v-model="i.isDone">{{ i.title }}</label>
+                </li>
+            </ul>
+        </div>
+    </body>
+    <script>
+        const vm1 = Vue.createApp({
+            data(){
+                return {
+                    lists:[
+                        {
+                            id: 'task001',
+                            title: '選項 1',
+                            isDone: false
+                        },
+                        {
+                            id: 'task002',
+                            title: '選項 2',
+                            isDone: false
+                        },
+                        {
+                            id: 'task003',
+                            title: '選項 3',
+                            isDone: false
+                        }
+                    ]
+                }
+            },computed:{
+                TodoLists(){
+                    return this.lists.filter(d => !d.isDone);
+                },
+                DoneLists(){
+                    return this.lists.filter(d => d.isDone);
+                },
+            }
+        }).mount('#app');
+    </script>
+</html>
