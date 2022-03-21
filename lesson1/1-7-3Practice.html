@@ -1,0 +1,57 @@
+<html>
+    <script src="https://unpkg.com/vue@next"></script>
+    <body>
+        <div id="app">
+            {{ msg }}
+        </div>
+        <hr>
+        <div id="app2">
+            <h2>Vue status update & render</h2>
+            <div class="messagess" style="max-height: 50px;overflow-y:scroll;width: 92%;padding: 6px 10px;border: 1px solid #ccc;">
+                <div v-for="m in messages">{{ m }}</div>
+            </div>
+            <p>
+                <input type="text"
+                    placeholder="輸入任意文字後按下Enter"
+                    v-model.trim="msg"
+                    @keydown.enter="addToMessages">
+            </p>
+        </div>
+    </body>
+    <script>
+        const vm = Vue.createApp({
+            data (){
+                return {
+                    msg : 'test'
+                }
+            },
+            watch: {
+                msg(val, oldval){
+                    console.log(`舊的 msg: ${oldval}`);
+                    console.log(`新的 msg: ${val}`);
+                }
+            }
+        }).mount('#app');
+
+        vm.$data.msg = 'new test';
+
+        const vm2 = Vue.createApp({
+            data (){
+                return {
+                    msg : '',
+                    messages : ['test1','test2','test3']
+                }
+            },methods: {
+                addToMessages(){
+                    this.messages.push(this.msg);
+                    this.msg = '';
+
+                    this.$nextTick(() => {
+                        const el = document.querySelector('.messagess');
+                        el.scrollTop = el.scrollHeight;
+                    });
+                }
+            },
+        }).mount('#app2');
+    </script>
+</html>

@@ -1,0 +1,30 @@
+<html>
+    <script src="https://unpkg.com/vue@next"></script>
+    <body>
+        <div id="app">
+
+        </div>
+    </body>
+    <script>
+        const vm = Vue.createApp({
+            data (){
+                return {
+                    msg : 'test'
+                }
+            },
+            created() {
+                console.log('created')
+            },
+            mounted() {
+                console.log('mounted')
+            },
+            unmounted() {
+                console.log('unmounted')
+            },
+        });
+        
+        vm.mount('#app')
+
+        vm.unmount();
+    </script>
+</html>
