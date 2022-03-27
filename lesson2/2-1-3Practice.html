@@ -1,0 +1,43 @@
+<html>
+    <script src="https://unpkg.com/vue@next"></script>
+    <body>
+        <div id="app">
+            <h3>
+                Root Instance
+            </h3>
+            <my-component></my-component>
+            <my-component></my-component> 
+        </div> 
+        <hr>
+        <div id="app2">
+            <h3>Roout Instance2</h3>
+            <my-component></my-component>
+        </div>       
+    </body>
+    <script>
+
+        // import myComponent from './components/my-component.js';
+
+        const app = Vue.createApp({});
+
+        app.component('my-component',{
+            template: `<div>Hello Vue3 Component!</div>`,
+            data(){
+
+            }
+        });
+
+        app.mount('#app');
+
+        // ---------------------------------------------
+
+        const app2 = Vue.createApp({
+            components:{
+                'my-component':{
+                    template: `<div>Hello Vue!</div>`,
+                },
+                // myComponent
+            }
+        });
+    </script>
+</html>
