@@ -1,0 +1,49 @@
+<html>
+    <script src="https://unpkg.com/vue@next"></script>
+    <body>
+        <div id="app">
+            <media-block></media-block>
+            
+            <media-block2></media-block2>
+        </div> 
+        <hr>
+        <div id="app2">
+            <media-block2></media-block2>
+        </div> 
+    </body>
+    <script type="text/x-template" id="media-block2">
+        <div class="media">
+            <img class="mr-3" src="" alt="Generic placeholder image2">
+            <div class="media-body">
+                <h5 class="mt-0">Media Heading 2 </h5>
+                <div>...</div>
+            </div>
+        </div>
+    </script>
+    <script>
+        const app = Vue.createApp({});
+
+        app.component('media-block',{
+            template: `
+                <div class="media">
+                    <img class="mr-3" src="" alt="Generic placeholder image">
+                    <div class="media-body">
+                        <h5 class="mt-0">Media Heading</h5>
+                        <div>...</div>
+                    </div>
+                </div>`
+        });
+
+        app.mount('#app');
+
+        // ------------------------------------
+
+        const app2 = Vue.createApp({});
+
+        app2.component('media-block2',{
+            template: '#media-block2'
+        });
+
+        app2.mount('#app2');
+    </script>
+</html>

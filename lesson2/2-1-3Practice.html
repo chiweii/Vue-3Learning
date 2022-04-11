@@ -10,9 +10,22 @@
         </div> 
         <hr>
         <div id="app2">
-            <h3>Roout Instance2</h3>
+            <h3>Root Instance2</h3>
             <my-component></my-component>
-        </div>       
+        </div> 
+        <hr>
+        <div id="app3">
+            <h3>元件與標籤命名規則</h3>
+            <h4>vue 的元件命名規則是有大小寫之分，但html 再辨識標籤時的沒有大小寫之分。</h4>
+            <h4 style="color: red;">但如果檔案本身是.vue的元件檔則沒關係，因為最後都會被編譯成javascript 所以大小寫是OK的</h4>
+            <first-component></first-component>
+            <secondcomponent></secondcomponent>
+        </div> 
+        <hr>
+        <div id="app4">
+            <h3>Root Instance2</h3>
+            <my-component></my-component>
+        </div> 
     </body>
     <script>
 
@@ -23,7 +36,9 @@
         app.component('my-component',{
             template: `<div>Hello Vue3 Component!</div>`,
             data(){
-
+                return {
+                    
+                }
             }
         });
 
@@ -35,9 +50,40 @@
             components:{
                 'my-component':{
                     template: `<div>Hello Vue!</div>`,
+                        data(){
+                            return {
+                            
+                        }
+                    }
                 },
-                // myComponent
             }
         });
+
+        app2.mount('#app2')
+
+        // ---------------------------------------------
+
+        const app3 = Vue.createApp({
+            components:{
+                'first-component':{
+                    template: `<div>this is first-component</div>`,
+                        data(){
+                            return {
+                            
+                        }
+                    }
+                },
+                'secondcomponent':{
+                    template: `<div>this is second-component</div>`,
+                        data(){
+                            return {
+                            
+                        }
+                    }
+                },
+            }
+        });
+
+        app3.mount('#app3')
     </script>
 </html>
