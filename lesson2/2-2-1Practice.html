@@ -1,0 +1,43 @@
+<html>
+    <script src="https://unpkg.com/vue@next"></script>
+    <body>
+        <div id="app">
+            <h3>{{ msg }}</h3>
+            <h4>:parent-msg="msg"</h4>
+            <my-component :parent-msg="msg"></my-component>
+            <hr>
+            <h4>:parent-msg2="msg2"</h4>
+            <my-component :parent-msg2="msg2"></my-component>
+            <hr>
+            <h4>msg2="msg2"</h4>
+            <my-component msg2="msg2"></my-component>
+        </div>
+    </body>
+    <script>
+        const app = Vue.createApp({
+            data(){
+                return{
+                    msg: '這是外層的msg',
+                    msg2: 5566
+                }
+            }
+        });
+
+        app.component('my-component',{
+            template:`
+            <div class="component">
+                <div>自己的 msg  ==> {{msg}}</div>
+                <div>從 props 來的 parentMsg ==> {{ parentMsg }}</div>
+                <div>從 props 來的 parentMsg2 ==> {{ parentMsg2 }}</div>
+            </div>`,
+            props: ["parentMsg","parentMsg2"],
+            data(){
+                return {
+                    msg: '這是子元件的msg'
+                }
+            }
+        });
+
+        app.mount('#app');
+    </script>
+</html>

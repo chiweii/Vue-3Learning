@@ -10,7 +10,12 @@
         <div id="app2">
             <media-block2></media-block2>
         </div> 
+        <hr>
+        <div id="app3">
+            <h3 ref="title">Cheng Wei Learning</h3>
+        </div> 
     </body>
+
     <script type="text/x-template" id="media-block2">
         <div class="media">
             <img class="mr-3" src="" alt="Generic placeholder image2">
@@ -20,6 +25,7 @@
             </div>
         </div>
     </script>
+
     <script>
         const app = Vue.createApp({});
 
@@ -45,5 +51,13 @@
         });
 
         app2.mount('#app2');
+
+        // ------------------------------------
+
+        const vm3 = Vue.createApp({
+            mounted() {
+                console.log(this.$refs.title.innerText);
+            }
+        }).mount('#app3');
     </script>
 </html>
